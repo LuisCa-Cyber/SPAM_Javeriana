@@ -1,10 +1,13 @@
 import streamlit as st
 import joblib
 from lime.lime_text import LimeTextExplainer
+import pickle
+import gzip
+
 
 # Cargar el modelo y el vectorizador entrenado usando joblib
-svm_model = joblib.load('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/03. Modelo Final/modelo_entrenado_comprimido.pkl')
-tfidf = joblib.load('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/03. Modelo Final/vectorizador_entrenado.pkl')
+svm_model = joblib.load('modelo_entrenado_comprimido.pkl')
+tfidf = joblib.load('vectorizador_entrenado.pkl')
 
 # Instanciar LimeTextExplainer
 explainer = LimeTextExplainer(class_names=['HAM', 'SPAM'])
