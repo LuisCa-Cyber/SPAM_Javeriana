@@ -1,14 +1,10 @@
-
 import streamlit as st
-import pickle
 import joblib
 from lime.lime_text import LimeTextExplainer
 
-# Cargar el modelo y el vectorizador entrenados
+# Cargar el modelo y el vectorizador entrenado usando joblib
 svm_model = joblib.load('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/03. Modelo Final/modelo_entrenado_comprimido.pkl')
-
-with open('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/03. Modelo Final/vectorizador_entrenado.pkl', 'rb') as vectorizer_file:
-    tfidf = pickle.load(vectorizer_file)
+tfidf = joblib.load('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/03. Modelo Final/vectorizador_entrenado.pkl')
 
 # Instanciar LimeTextExplainer
 explainer = LimeTextExplainer(class_names=['HAM', 'SPAM'])
@@ -43,4 +39,3 @@ if st.button("Verificar si es Spam"):
         st.components.v1.html(explicacion.as_html(), height=800)
     else:
         st.write("Por favor, ingrese un mensaje para analizar.")
-
