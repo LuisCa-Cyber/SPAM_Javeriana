@@ -3,3 +3,4 @@ lime
 scikit-learn
 joblib
 pickle
+gzip
